@@ -11,7 +11,9 @@ import { MongoClient, ObjectId } from 'mongodb';
 const client = new MongoClient('mongodb://localhost:27017');
 await client.connect();
 
-
+app.get('/', async (req, res) => {
+    res.render('homepage');
+});
 
 
 

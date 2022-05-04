@@ -1,6 +1,7 @@
 {
   "name": "membership-register-project",
   "version": "1.0.0",
+  "type": "module",
   "description": "Membership register of a knitting club",
   "main": "index.js",
   "scripts": {
