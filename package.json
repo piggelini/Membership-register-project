@@ -1,0 +1,25 @@
+{
+  "name": "membership-register-project",
+  "version": "1.0.0",
+  "description": "Membership register of a knitting club",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/piggelini/Membership-register-project.git"
+  },
+  "author": "piggelini",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piggelini/Membership-register-project/issues"
+  },
+  "homepage": "https://github.com/piggelini/Membership-register-project#readme",
+  "dependencies": {
+    "ejs": "^3.1.7",
+    "express": "^4.18.1",
+    "mongodb": "^4.5.0",
+    "nodemon": "^2.0.16"
+  }
+}
