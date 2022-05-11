@@ -9,16 +9,19 @@
 </head>
 
 <body>
-    <ul>
-        <% members.forEach((member)=> { %>
-            <li>
-                <a href="/member/<%= member._id %>">
-                    <%= member.name%>
-                </a>
+    <%- include('header') %>
+        <ul>
 
-            </li>
-            <% }); %>
-    </ul>
+            <% members.forEach((member)=> { %>
+                <li>
+                    <a href="/member/<%= member._id %>">
+                        <%= member.name%>
+                    </a>
+
+                </li>
+                <% }); %>
+        </ul>
+        <%- include('footer') %>
 </body>
 
 </html>

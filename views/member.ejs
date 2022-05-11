@@ -9,21 +9,24 @@
 </head>
 
 <body>
-    <h1>
-        <%= name %>
-    </h1>
-    <p>
-        E-mail: <%= email %>
-    </p>
-    <p>
-        Phone number: <%= number %>
-    </p>
-    <p>
-        Member since: <%= joined %>
-    </p>
-    <p>
-        Knitting level: <%= level %>
-    </p>
+    <%- include('header') %>
+        <h1>
+            <%= name %>
+        </h1>
+        <p>
+            E-mail: <%= email %>
+        </p>
+        <p>
+            Phone number: <%= number %>
+        </p>
+        <p>
+            Member since: <%= joined %>
+        </p>
+        <p>
+            Knitting level: <%= level %>
+        </p>
+
+        <%- include('footer') %>
 </body>
 
 </html>
