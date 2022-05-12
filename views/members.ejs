@@ -12,6 +12,9 @@
     <%- include('header') %>
         <ul>
 
+            <nav><button onclick="location.href= '/members/';">Default sorting</button><button
+                    onclick="location.href= '/members/ascend/';">Alphabetical order</button><button
+                    onclick="location.href= '/members/descend/';">Reversed alphabetical order</button></nav>
             <% members.forEach((member)=> { %>
                 <li>
                     <a href="/member/<%= member._id %>">

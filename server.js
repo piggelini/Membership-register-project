@@ -4,7 +4,7 @@ const app = express();
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
-app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 
 import { MongoClient, ObjectId } from 'mongodb';
@@ -25,6 +25,20 @@ app.get('/members', async (req, res) => {
     res.render('members', { members });
 });
 
+app.get('/members/ascend', async (req, res) => {
+    const members = await memberships.find({}, { "title": 1, _id: 0 }).sort({ "name": 1 }).toArray();
+    res.render('members', { members });
+});
+
+app.get('/members/descend', async (req, res) => {
+    const members = await memberships.find({}, { "title": 1, _id: 0 }).sort({ "name": -1 }).toArray();
+    res.render('members', { members });
+});
+
+
+
+
+
 app.get('/member/:id', async (req, res) => {
     const member = await memberships.findOne({ _id: ObjectId(req.params.id) });
     res.render('member', {
@@ -32,9 +46,17 @@ app.get('/member/:id', async (req, res) => {
         email: member.email,
         number: member.number,
         joined: member.joined,
-        level: member.level
+        level: member.level,
+        id: member._id
+
     });
 });
+
+app.get('/member/:id/delete', async (req, res) => {
+    await memberships.deleteOne({ _id: ObjectId(req.params.id) });
+    res.redirect('/members');
+});
+
 
 app.get('/members/create', async (req, res) => {
     res.render('create');
@@ -44,6 +66,8 @@ app.post('/members/create', async (req, res) => {
     await memberships.insertOne(req.body);
     res.redirect('/members');
 });
+
+
 
 
 
