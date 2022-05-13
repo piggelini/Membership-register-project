@@ -57,6 +57,33 @@ app.get('/member/:id/delete', async (req, res) => {
     res.redirect('/members');
 });
 
+app.get('/member/:id/update', async (req, res) => {
+    const member = await memberships.findOne({ _id: ObjectId(req.params.id) });
+    res.render('update', {
+        name: member.name,
+        email: member.email,
+        number: member.number,
+        joined: member.joined,
+        level: member.level,
+        id: member._id
+
+    });
+});
+
+app.post('/member/:id/update/save', (req, res) => {
+    memberships.findOneAndUpdate({ _id: ObjectId(req.params.id) }, {
+        $set: {
+            name: req.body.name,
+            email: req.body.email,
+            number: req.body.number,
+            joined: req.body.joined,
+            level: req.body.level
+        }
+    });
+    res.redirect('/members');
+
+});
+
 
 app.get('/members/create', async (req, res) => {
     res.render('create');
